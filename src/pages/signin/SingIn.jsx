@@ -15,13 +15,13 @@ const SingIn = () => {
 
   const axios_post = () => {
     const data = {
-      email: { email },
-      age: { password },
+      email: email,
+      age: password,
     };
     axios
-      .post("http://localhost:8080//api/login", data)
+      .post("http://localhost:8080/api/login", data)
       .then((response) => {
-        console.log(response);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -30,6 +30,7 @@ const SingIn = () => {
 
   return (
     <>
+      <br />
       이메일<input onChange={onChangeEmail} value={email}></input>
       <br />
       <br />

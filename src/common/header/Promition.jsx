@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { ThemeProvider } from "styled-components";
-import theme from "../../theme";
+import styled from "styled-components";
 
 const Promition = () => {
   const Text = styled.div`
@@ -12,11 +11,7 @@ const Promition = () => {
     color: white;
     font-weight: 500;
   `;
-  return (
-    <ThemeProvider theme={theme}>
-      <Text>지금 가입하고 인기상품 100 원에 받아가세요!</Text>
-    </ThemeProvider>
-  );
+  return <Text>지금 가입하고 인기상품 100 원에 받아가세요!</Text>;
 };
 
 export default Promition;

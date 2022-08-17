@@ -1,14 +1,23 @@
 import React from "react";
-import theme from "../../theme";
+import styled from "styled-components";
 
 const SearchBox = () => {
-  const Searchbox = styled.input``;
+  const Searchbox = styled.input`
+    width: 400px;
+    height: 50px;
+    border-color: ${(props) => props.theme.maincolor};
+    border-radius: 6px;
+    border-width: 1px;
+    font-size: large;
+    margin: auto;
+    &:focus {
+      outline: none;
+    }
+  `;
 
   return (
     <>
-      <ThemeProvider theme={theme}>
-        <Text>지금 가입하고 인기상품 100 원에 받아가세요!</Text>
-      </ThemeProvider>
+      <Searchbox placeholder="검색어를 입력해주세요"></Searchbox>
     </>
   );
 };
