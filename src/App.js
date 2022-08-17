@@ -1,17 +1,28 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./common/header/Header";
+import NavBar from "./common/navbar/NavBar";
+import Main from "./pages/main/Main";
+import MyPage from "./pages/mypage/MyPage";
+import SingIn from "./pages/signin/SingIn";
+import SingUp from "./pages/singup/SingUp";
 
 function App() {
-  const [hello, setHello] = useState("");
-
-  useEffect(() => {
-    axios
-      .get("/api/hello")
-      .then((response) => setHello(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  return <div>백엔드에서 가져온 데이터입니다 : {hello}</div>;
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Header />
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Main />}></Route>
+          <Route path="signin" element={<SingIn />}></Route>
+          <Route path="signup" element={<SingUp />}></Route>
+          <Route path="/mypage" element={<MyPage />}></Route>
+          <Route path="signin" element={<SingIn />}></Route>
+          <Route path="signup" element={<SingUp />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </div>
+  );
 }
 
 export default App;
