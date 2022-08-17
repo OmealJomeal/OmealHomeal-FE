@@ -1,4 +1,9 @@
 .App {
   text-align: center;
-  width: 1500px;
+  width: 1050px;
+  margin: 0 auto;
+}
+
+.AppFonts {
+  font-family: "NotoSans";
 }

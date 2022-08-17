@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const SingIn = () => {
-  const [email, setEmail] = useState(undefined);
-  const [password, setPassword] = useState(undefined);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
@@ -21,7 +21,7 @@ const SingIn = () => {
     axios
       .post("http://localhost:8080/api/login", data)
       .then((response) => {
-        console.log(response.data);
+        console.log(response);
       })
       .catch((error) => {
         console.log(error);
