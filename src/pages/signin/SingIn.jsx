@@ -19,7 +19,7 @@ const SingIn = () => {
       age: { password },
     };
     axios
-      .post("http://localhost:8080//api/login", data)
+      .post("http://localhost:8080/api/login", data)
       .then((response) => {
         console.log(response);
       })
