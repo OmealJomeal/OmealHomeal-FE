@@ -8,11 +8,11 @@ import SingUp from "./pages/singup/SingUp";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <BrowserRouter>
         <Header />
         <NavBar />
-        <Routes>
+        <Routes className="App">
           <Route path="/" element={<Main />}></Route>
           <Route path="signin" element={<SingIn />}></Route>
           <Route path="signup" element={<SingUp />}></Route>
@@ -21,7 +21,7 @@ function App() {
           <Route path="signup" element={<SingUp />}></Route>
         </Routes>
       </BrowserRouter>
-    </div>
+    </>
   );
 }
 

@@ -1,7 +1,12 @@
 import React from "react";
+import Promition from "./Promition";
 
 const Header = () => {
-  return <div></div>;
+  return (
+    <>
+      <Promition></Promition>
+    </>
+  );
 };
 
 export default Header;
