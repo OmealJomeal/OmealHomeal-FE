@@ -24,9 +24,12 @@ const ShadowBox = styled.div`
 `;
 
 const CategoryBar = styled.div`
-  width: 25%;
+  width: 262.5px;
   height: 130px;
   background-color: gray;
+  z-index: 1;
+  display: inline-block;
+  position: absolute;
 `;
 
 const NavBar = () => {

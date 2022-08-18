@@ -1,5 +1,38 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 import axios from "axios";
+
+const InputBox = styled.input`
+  width: 95px;
+  height: 14px;
+  flex-grow: 0;
+  padding: 17px 229px 18px 16px;
+  border-radius: 4px;
+  border: solid 0.7px #ddd;
+  margin: 8px 0px;
+  &:focus {
+    background-color: #e8f0fe;
+    outline: none;
+  }
+`;
+
+const SignInUpBox = styled.button`
+  width: 340px;
+  height: 54px;
+  flex-grow: 0;
+  padding: 16px 141px;
+  border-radius: 3px;
+  border: solid 1px ${(props) => props.theme.maincolor};
+  background-color: white;
+  color: ${(props) => props.theme.maincolor};
+  margin: 7px 0px;
+  font-weight: bold;
+  &:hover {
+    background-color: ${(props) => props.theme.maincolor};
+    outline: none;
+    color: white;
+  }
+`;
 
 const SingIn = () => {
   const [email, setEmail] = useState("");
@@ -29,21 +62,53 @@ const SingIn = () => {
         console.log(response);
       })
       .catch((error) => {
-        console.log(JSON.stringify(data));
         console.log(error.response.data);
       });
   };
 
   return (
     <>
-      <br />
-      이메일<input onChange={onChangeEmail} value={email}></input>
-      <br />
-      <br />
-      비밀번호<input onChange={onChangePassword} value={password}></input>
-      <br />
-      <br />
-      <button onClick={axios_post}>로그인</button>
+      <div
+        style={{
+          width: "340px",
+          height: "360px",
+          margin: "auto",
+          marginTop: "70px",
+          textAlign: "center",
+        }}
+      >
+        <div
+          style={{
+            fontSize: "20px",
+            fontWeight: "bold",
+            width: "340px",
+            marginBottom: "25px",
+          }}
+        >
+          로그인
+        </div>
+        <InputBox required onChange={onChangeEmail} value={email}></InputBox>
+        <InputBox
+          required
+          onChange={onChangePassword}
+          value={password}
+        ></InputBox>
+        <div
+          style={{
+            textAlign: "right",
+            margin: "20px 0px",
+            fontSize: "small",
+          }}
+        >
+          <span>아이디 찾기</span>
+          &nbsp; &nbsp; &nbsp; &nbsp;
+          <span>비밀번호 찾기</span>
+        </div>
+        <SignInUpBox onClick={axios_post}>로그인</SignInUpBox>
+        <a href="/singup">
+          <SignInUpBox>회원가입</SignInUpBox>
+        </a>
+      </div>
     </>
   );
 };
