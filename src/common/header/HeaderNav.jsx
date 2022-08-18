@@ -32,7 +32,9 @@ const HeaderNav = () => {
           로그인
         </Text>
         <Middle></Middle>
-        <Text>고객센터</Text>
+        <Text as="a" href="/mypage">
+          마이페이지
+        </Text>
       </div>
     </>
   );

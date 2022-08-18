@@ -34,7 +34,7 @@ const SignInUpBox = styled.button`
   }
 `;
 
-const SingIn = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -105,7 +105,7 @@ const SingIn = () => {
           <span>비밀번호 찾기</span>
         </div>
         <SignInUpBox onClick={axios_post}>로그인</SignInUpBox>
-        <a href="/singup">
+        <a href="/signup">
           <SignInUpBox>회원가입</SignInUpBox>
         </a>
       </div>
@@ -113,4 +113,4 @@ const SingIn = () => {
   );
 };
 
-export default SingIn;
+export default SignIn;
