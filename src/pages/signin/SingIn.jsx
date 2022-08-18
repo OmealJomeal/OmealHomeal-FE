@@ -19,12 +19,17 @@ const SingIn = () => {
       age: password,
     };
     axios
-      .post("http://localhost:8080/api/login", data)
+      .post("http://localhost:8080/api/login", JSON.stringify(data), {
+        headers: {
+          "Content-Type": `application/json`,
+        },
+      })
       .then((response) => {
         console.log(response);
       })
       .catch((error) => {
-        console.log(error);
+        console.log(JSON.stringify(data));
+        console.log(error.response.data);
       });
   };
 
