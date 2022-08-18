@@ -16,12 +16,13 @@ const SingIn = () => {
   const axios_post = () => {
     const data = {
       email: email,
-      age: password,
+      password: password,
     };
     axios
       .post("http://localhost:8080/api/login", JSON.stringify(data), {
         headers: {
-          "Content-Type": `application/json`,
+          "Content-Type": "application/json",
+          data,
         },
       })
       .then((response) => {
