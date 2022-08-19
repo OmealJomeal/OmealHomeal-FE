@@ -128,44 +128,45 @@ const SingUp = () => {
   };
 
   const onToggle = (e) => {
-    setValue((prevState) => {
-      switch (e.target.name) {
-        case "livealone":
-          return { ...prevState, [e.target.name]: !prevState.livealone };
-        case "child":
-          return { ...prevState, [e.target.name]: !prevState.child };
-        case "worker":
-          return { ...prevState, [e.target.name]: !prevState.worker };
-        case "homemaker":
-          return { ...prevState, [e.target.name]: !prevState.homemaker };
-        case "baby":
-          return { ...prevState, [e.target.name]: !prevState.baby };
-        case "pet":
-          return { ...prevState, [e.target.name]: !prevState.pet };
-        case "outdoor":
-          return { ...prevState, [e.target.name]: !prevState.outdoor };
-        case "health":
-          return { ...prevState, [e.target.name]: !prevState.health };
-        case "baking":
-          return { ...prevState, [e.target.name]: !prevState.baking };
-        case "cooking":
-          return { ...prevState, [e.target.name]: !prevState.cooking };
-        case "babycare":
-          return { ...prevState, [e.target.name]: !prevState.babycare };
-        case "sweetness":
-          return { ...prevState, [e.target.name]: !prevState.sweetness };
-        case "bitter":
-          return { ...prevState, [e.target.name]: !prevState.bitter };
-        case "sour_taste":
-          return { ...prevState, [e.target.name]: !prevState.sour_taste };
-        case "salty":
-          return { ...prevState, [e.target.name]: !prevState.salty };
-        case "spicy":
-          return { ...prevState, [e.target.name]: !prevState.spicy };
-        default:
-          return;
-      }
-    });
+    value &&
+      setValue((prevState) => {
+        switch (e.target.name) {
+          case "livealone":
+            return { ...prevState, [e.target.name]: !prevState.livealone };
+          case "child":
+            return { ...prevState, [e.target.name]: !prevState.child };
+          case "worker":
+            return { ...prevState, [e.target.name]: !prevState.worker };
+          case "homemaker":
+            return { ...prevState, [e.target.name]: !prevState.homemaker };
+          case "baby":
+            return { ...prevState, [e.target.name]: !prevState.baby };
+          case "pet":
+            return { ...prevState, [e.target.name]: !prevState.pet };
+          case "outdoor":
+            return { ...prevState, [e.target.name]: !prevState.outdoor };
+          case "health":
+            return { ...prevState, [e.target.name]: !prevState.health };
+          case "baking":
+            return { ...prevState, [e.target.name]: !prevState.baking };
+          case "cooking":
+            return { ...prevState, [e.target.name]: !prevState.cooking };
+          case "babycare":
+            return { ...prevState, [e.target.name]: !prevState.babycare };
+          case "sweetness":
+            return { ...prevState, [e.target.name]: !prevState.sweetness };
+          case "bitter":
+            return { ...prevState, [e.target.name]: !prevState.bitter };
+          case "sour_taste":
+            return { ...prevState, [e.target.name]: !prevState.sour_taste };
+          case "salty":
+            return { ...prevState, [e.target.name]: !prevState.salty };
+          case "spicy":
+            return { ...prevState, [e.target.name]: !prevState.spicy };
+          default:
+            return;
+        }
+      });
   };
 
   const [user_address, setUserAddress] = useState("");
@@ -203,6 +204,11 @@ const SingUp = () => {
       .then((response) => {
         console.log(data);
         console.log(response);
+        if (response.data === 1) {
+          alert("중복된 이메일이 존재합니다.");
+        } else {
+          alert("사용 가능한 이메일입니다.");
+        }
       })
       .catch((error) => {
         console.log(data);
@@ -244,7 +250,7 @@ const SingUp = () => {
       },
     };
     axios
-      .post("http://localhost:8080/api/User", JSON.stringify(data), {
+      .post("http://localhost:8080/api/user", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
           data,
@@ -253,6 +259,9 @@ const SingUp = () => {
       .then((response) => {
         console.log(data);
         console.log(response);
+        if (response.data === 1) {
+          alert("회원가입 되셨습니다.");
+        }
       })
       .catch((error) => {
         console.log(JSON.stringify(data));
