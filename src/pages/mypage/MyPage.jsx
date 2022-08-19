@@ -125,6 +125,7 @@ const MyPage = () => {
             <SelectBox>
               <CheckBox
                 onClick={onToggle}
+                onToggle={onToggle}
                 type="checkbox"
                 name="livealone"
                 label="혼자 살아요"

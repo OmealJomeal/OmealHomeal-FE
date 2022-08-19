@@ -5,6 +5,7 @@ import PopupPostCode from "./PopupPostCode";
 import CheckBox from "../../common/checkbox/CheckBox";
 import "./radio.css";
 import "../../common/checkbox/checkbox.css";
+import axios from "axios";
 
 const InputBox = styled.input`
   display: block;
@@ -83,9 +84,10 @@ const UnitBox = styled.div`
   display: flex;
 `;
 
-const SelectBox = styled.label`
+const SelectBox = styled.div`
   display: inline-block;
   width: 160px;
+  paddding: 50px 0px 0px 40px;
   margin: 0px 10px;
   height: 40px;
 `;
@@ -96,26 +98,27 @@ const SingUp = () => {
     password: "",
     name: "",
     phoneNumber: "",
+    gender: "",
     // lifestyle
-    livealone: 0,
-    child: 0,
-    worker: 0,
-    couple: 0,
-    homemaker: 0,
-    babay: 0,
+    livealone: false,
+    child: false,
+    worker: false,
+    couple: false,
+    homemaker: false,
+    babay: false,
     // interest
-    pet: 0,
-    outdoor: 0,
-    health: 0,
-    baking: 0,
-    cooking: 0,
-    babycare: 0,
+    pet: false,
+    outdoor: false,
+    health: false,
+    baking: false,
+    cooking: false,
+    babycare: false,
     // food_favor
-    sweetness: 0,
-    bitter: 0,
-    sour_taste: 0,
-    salty: 0,
-    spicy: 0,
+    sweetness: false,
+    bitter: false,
+    sour_taste: false,
+    salty: false,
+    spicy: false,
   });
 
   const onChangeHandler = (e) => {
@@ -126,7 +129,6 @@ const SingUp = () => {
 
   const onToggle = (e) => {
     setValue((prevState) => {
-      console.log(prevState);
       switch (e.target.name) {
         case "livealone":
           return { ...prevState, [e.target.name]: !prevState.livealone };
@@ -184,6 +186,56 @@ const SingUp = () => {
   // 팝업창 닫기
   const closePostCode = () => {
     setIsPopupOpen(false);
+  };
+
+  // 회원가입 버튼 조회
+  const onSignUp = () => {
+    const data = {
+      email: value.email,
+      password: value.password,
+      name: value.name,
+      phone: value.phoneNumber,
+      gender: value.gender,
+      lifestyle: {
+        livealone: value.livealone ? 1 : 0,
+        gender: value.gender === "M" ? 1 : 0,
+        child: value.child ? 1 : 0,
+        worker: value.worker ? 1 : 0,
+        couple: value.couple ? 1 : 0,
+        homemaker: value.homemaker ? 1 : 0,
+        baby: value.baby ? 1 : 0,
+      },
+      interest: {
+        pet: value.pet ? 1 : 0,
+        outdoor: value.outdoor ? 1 : 0,
+        health: value.health ? 1 : 0,
+        baking: value.baking ? 1 : 0,
+        cooking: value.cooking ? 1 : 0,
+        babycare: value.babycare ? 1 : 0,
+      },
+      food_favor: {
+        sweetness: value.sweetness ? 1 : 0,
+        bitter: value.bitter ? 1 : 0,
+        sour_taste: value.sour_taste ? 1 : 0,
+        salty: value.salty ? 1 : 0,
+        spicy: value.spicy ? 1 : 0,
+      },
+    };
+    axios
+      .post("http://localhost:8080/api/user", JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+          data,
+        },
+      })
+      .then((response) => {
+        console.log(data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(JSON.stringify(data));
+        console.log(error.response.data);
+      });
   };
 
   return (
@@ -283,7 +335,13 @@ const SingUp = () => {
           <UnitBox>
             <Indicator>성별</Indicator>
             <div class="checks">
-              <input type="radio" id="man" name="gender" value="0" />
+              <input
+                onChange={onChangeHandler}
+                type="radio"
+                id="man"
+                name="gender"
+                value="M"
+              />
               <label for="man">
                 <div
                   style={{
@@ -298,7 +356,13 @@ const SingUp = () => {
               </label>
             </div>
             <div class="checks">
-              <input type="radio" id="woman" name="gender" value="1" />
+              <input
+                onChange={onChangeHandler}
+                type="radio"
+                id="woman"
+                name="gender"
+                value="W"
+              />
               <label for="woman">
                 <div
                   style={{
@@ -334,7 +398,7 @@ const SingUp = () => {
                 <CheckBox
                   onClick={onToggle}
                   type="checkbox"
-                  name="livealone"
+                  name="child"
                   label="아이가 있어요"
                 ></CheckBox>
               </SelectBox>
@@ -342,7 +406,7 @@ const SingUp = () => {
                 <CheckBox
                   onClick={onToggle}
                   type="checkbox"
-                  name="livealone"
+                  name="worker"
                   label="직장인이에요"
                 ></CheckBox>
               </SelectBox>
@@ -350,7 +414,7 @@ const SingUp = () => {
                 <CheckBox
                   onClick={onToggle}
                   type="checkbox"
-                  name="livealone"
+                  name="couple"
                   label="커플이에요"
                 ></CheckBox>
               </SelectBox>
@@ -358,7 +422,7 @@ const SingUp = () => {
                 <CheckBox
                   onClick={onToggle}
                   type="checkbox"
-                  name="livealone"
+                  name="homemaker"
                   label="가정주부에요"
                 ></CheckBox>
               </SelectBox>
@@ -473,7 +537,7 @@ const SingUp = () => {
             </div>
           </UnitBox>
           <UnitBox style={{ margin: "0px auto 150px auto" }}>
-            <SignUpButton>가입하기</SignUpButton>
+            <SignUpButton onClick={onSignUp}>가입하기</SignUpButton>
           </UnitBox>
           {/* 요소 쌓임 순서 방지 위해 이렇게 함! */}
           <div id="popupDom">
