@@ -188,6 +188,28 @@ const SingUp = () => {
     setIsPopupOpen(false);
   };
 
+  // 이메일 중복 검사
+  const onMultiple = () => {
+    const data = {
+      email: value.email,
+    };
+    axios
+      .post("http://localhost:8080/api/checkEmail", JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+          data,
+        },
+      })
+      .then((response) => {
+        console.log(data);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(data);
+        console.log(error.response.data);
+      });
+  };
+
   // 회원가입 버튼 조회
   const onSignUp = () => {
     const data = {
@@ -222,7 +244,7 @@ const SingUp = () => {
       },
     };
     axios
-      .post("http://localhost:8080/api/user", JSON.stringify(data), {
+      .post("http://localhost:8080/api/User", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
           data,
@@ -262,7 +284,7 @@ const SingUp = () => {
             placeholder="예: marketkurly@kurly.com"
             type="email"
           ></InputBox>
-          <MiniButton>중복 확인</MiniButton>
+          <MiniButton onClick={onMultiple}>중복 확인</MiniButton>
         </UnitBox>
         <UnitBox>
           <Indicator>비밀번호</Indicator>
