@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 const InputBox = styled.input`
   width: 95px;
@@ -46,6 +47,8 @@ const SignIn = () => {
     setPassword(e.target.value);
   };
 
+  let navigate = useNavigate();
+
   const axios_post = () => {
     const data = {
       email: email,
@@ -60,6 +63,7 @@ const SignIn = () => {
       })
       .then((response) => {
         console.log(response);
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.response.data);
@@ -106,7 +110,9 @@ const SignIn = () => {
         </div>
         <SignInUpBox onClick={axios_post}>로그인</SignInUpBox>
         <a href="/signup">
-          <SignInUpBox>회원가입</SignInUpBox>
+          <Link to={"/signup"}>
+            <SignInUpBox>회원가입</SignInUpBox>
+          </Link>
         </a>
       </div>
     </>

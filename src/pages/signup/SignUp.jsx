@@ -6,6 +6,7 @@ import CheckBox from "../../common/checkbox/CheckBox";
 import "./radio.css";
 import "../../common/checkbox/checkbox.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const InputBox = styled.input`
   display: block;
@@ -217,6 +218,9 @@ const SingUp = () => {
   };
 
   // 회원가입 버튼 조회
+
+  let navigate = useNavigate();
+
   const onSignUp = () => {
     const data = {
       email: value.email,
@@ -261,6 +265,7 @@ const SingUp = () => {
         console.log(response);
         if (response.data === 1) {
           alert("회원가입 되셨습니다.");
+          navigate("/");
         }
       })
       .catch((error) => {
