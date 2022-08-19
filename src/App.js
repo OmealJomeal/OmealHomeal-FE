@@ -10,6 +10,7 @@ import MyPage from "./pages/mypage/MyPage";
 import SignIn from "./pages/signin/SignIn";
 import SignUp from "./pages/signup/SignUp";
 import Cart from "./pages/carts/Cart";
+import CreateFeed from "./pages/createfeed/CreateFeed";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
               <Route path="signin" element={<SignIn />}></Route>
               <Route path="signup" element={<SignUp />}></Route>
               <Route path="cart" element={<Cart />}></Route>
+              <Route path="createfeed" element={<CreateFeed />}></Route>
             </Routes>
           </BrowserRouter>
         </ThemeProvider>

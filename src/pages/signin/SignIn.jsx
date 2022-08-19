@@ -63,10 +63,15 @@ const SignIn = () => {
       })
       .then((response) => {
         console.log(response);
-        navigate("/");
+        if (response.data !== "") {
+          navigate("/");
+        } else {
+          alert("존재하지 않는 아이디나 비밀번호입니다.");
+        }
       })
       .catch((error) => {
         console.log(error.response.data);
+        alert("");
       });
   };
 

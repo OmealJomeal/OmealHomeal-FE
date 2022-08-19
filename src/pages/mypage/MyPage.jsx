@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import CheckBox from "../../common/checkbox/CheckBox";
+import axios from "axios";
 
 const Line = styled.div`
   width: 840px;
@@ -30,6 +31,16 @@ const Indicator = styled.div`
 `;
 
 const MyPage = () => {
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/user")
+      .then((response) => {
+        console.log("마이페이지", response);
+      })
+      .catch((error) => {
+        console.log("마이페이지", error.response.data);
+      });
+  });
   const [value, setValue] = useState({
     email: "",
     password: "",
@@ -58,45 +69,46 @@ const MyPage = () => {
   });
 
   const onToggle = (e) => {
-    setValue((prevState) => {
-      console.log(prevState);
-      switch (e.target.name) {
-        case "livealone":
-          return { ...prevState, [e.target.name]: !prevState.livealone };
-        case "child":
-          return { ...prevState, [e.target.name]: !prevState.child };
-        case "worker":
-          return { ...prevState, [e.target.name]: !prevState.worker };
-        case "homemaker":
-          return { ...prevState, [e.target.name]: !prevState.homemaker };
-        case "baby":
-          return { ...prevState, [e.target.name]: !prevState.baby };
-        case "pet":
-          return { ...prevState, [e.target.name]: !prevState.pet };
-        case "outdoor":
-          return { ...prevState, [e.target.name]: !prevState.outdoor };
-        case "health":
-          return { ...prevState, [e.target.name]: !prevState.health };
-        case "baking":
-          return { ...prevState, [e.target.name]: !prevState.baking };
-        case "cooking":
-          return { ...prevState, [e.target.name]: !prevState.cooking };
-        case "babycare":
-          return { ...prevState, [e.target.name]: !prevState.babycare };
-        case "sweetness":
-          return { ...prevState, [e.target.name]: !prevState.sweetness };
-        case "bitter":
-          return { ...prevState, [e.target.name]: !prevState.bitter };
-        case "sour_taste":
-          return { ...prevState, [e.target.name]: !prevState.sour_taste };
-        case "salty":
-          return { ...prevState, [e.target.name]: !prevState.salty };
-        case "spicy":
-          return { ...prevState, [e.target.name]: !prevState.spicy };
-        default:
-          return;
-      }
-    });
+    value &&
+      setValue((prevState) => {
+        console.log(prevState);
+        switch (e.target.name) {
+          case "livealone":
+            return { ...prevState, [e.target.name]: !prevState.livealone };
+          case "child":
+            return { ...prevState, [e.target.name]: !prevState.child };
+          case "worker":
+            return { ...prevState, [e.target.name]: !prevState.worker };
+          case "homemaker":
+            return { ...prevState, [e.target.name]: !prevState.homemaker };
+          case "baby":
+            return { ...prevState, [e.target.name]: !prevState.baby };
+          case "pet":
+            return { ...prevState, [e.target.name]: !prevState.pet };
+          case "outdoor":
+            return { ...prevState, [e.target.name]: !prevState.outdoor };
+          case "health":
+            return { ...prevState, [e.target.name]: !prevState.health };
+          case "baking":
+            return { ...prevState, [e.target.name]: !prevState.baking };
+          case "cooking":
+            return { ...prevState, [e.target.name]: !prevState.cooking };
+          case "babycare":
+            return { ...prevState, [e.target.name]: !prevState.babycare };
+          case "sweetness":
+            return { ...prevState, [e.target.name]: !prevState.sweetness };
+          case "bitter":
+            return { ...prevState, [e.target.name]: !prevState.bitter };
+          case "sour_taste":
+            return { ...prevState, [e.target.name]: !prevState.sour_taste };
+          case "salty":
+            return { ...prevState, [e.target.name]: !prevState.salty };
+          case "spicy":
+            return { ...prevState, [e.target.name]: !prevState.spicy };
+          default:
+            return;
+        }
+      });
   };
   return (
     <>
