@@ -7,7 +7,7 @@ const CreateProduct = () => {
     price: "",
     description: "",
     category: "",
-    category: null,
+    category: "",
   });
 
   const onChangeHandler = (e) => {
@@ -35,26 +35,34 @@ const CreateProduct = () => {
   const onUploadProduct = () => {
     // formData.append('stringFoodDto', JSON.stringify(foodDto));
     console.log(formData.get("product_name"));
-    if (formData.get("product_name") === null) {
-      formData.append("product_name", JSON.stringify(value.name));
-    }
-    if (formData.get("product_price") === null) {
-      formData.append("product_price", JSON.stringify(value.price));
-    }
-    if (formData.get("product_description") === null) {
-      formData.append("product_description", JSON.stringify(value.description));
-    }
-    if (formData.get("product_category") === null) {
-      formData.append("product_category", JSON.stringify(value.description));
-    }
+    // if (formData.get("product_name") === null) {
+    //   formData.append("product_name", JSON.stringify(value.name));
+    // }
+    // if (formData.get("product_price") === null) {
+    //   formData.append("product_price", JSON.stringify(value.price));
+    // }
+    // if (formData.get("product_description") === null) {
+    //   formData.append("product_description", JSON.stringify(value.description));
+    // }
+    // if (formData.get("product_category") === null) {
+    //   formData.append("product_category", JSON.stringify(value.category));
+    // }
+
+    const data = {
+      product_name: value.name,
+      product_price: value.price,
+      product_description: value.description,
+      product_category: value.category,
+    };
     axios
-      .post("http://localhost:8080/api/product", formData)
+      .post("http://localhost:8080/api/product", formData, JSON.stringify(data))
       .then((response) => {
         console.log(response);
       })
       .catch((error) => {
         console.log(error.response.data);
         for (const keyValue of formData) console.log(keyValue);
+        console.log(data);
       });
   };
 
