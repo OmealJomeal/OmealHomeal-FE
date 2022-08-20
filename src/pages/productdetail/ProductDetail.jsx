@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+
 import styled from "styled-components";
 import { BsHeart } from "react-icons/bs";
 import { VscBell } from "react-icons/vsc";
@@ -55,6 +58,20 @@ const CountButton = styled.button`
 `;
 
 const ProductDetail = () => {
+  const { id } = useParams();
+  console.log(id);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/api/productdetail/${id}`)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  });
+
   const [heartHover, setHeartHover] = useState(false);
   const [bellHover, setBellHover] = useState(false);
 
