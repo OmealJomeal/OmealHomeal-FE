@@ -139,7 +139,7 @@ const ProductDetail = () => {
             >
               <img
                 alt="product_image"
-                src={require(`../../images/${id}_noneClear.png`).default}
+                src={process.env.PUBLIC_URL + `/img/${id}_noneClear.png`}
               />
             </div>
           </div>
