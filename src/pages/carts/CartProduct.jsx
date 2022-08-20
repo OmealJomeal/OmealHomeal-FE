@@ -26,12 +26,13 @@ const CartProduct = (props) => {
           <img
             style={{ width: "60px", height: "80px", marginLeft: "15px" }}
             src={
+              props.product &&
               process.env.PUBLIC_URL +
-              `/img/${props.product.product_id}_noneClear.png`
+                `/img/${props.product.product_id}_noneClear.png`
             }
           ></img>
           <div style={{ marginLeft: "25px", lineHeight: "81px" }}>
-            {props.product.product_name}
+            {props.product && props.product.product_name}
           </div>
         </div>
       </div>
