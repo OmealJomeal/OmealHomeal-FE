@@ -16,9 +16,11 @@ const Cart = () => {
 
   const [cartProducts, setCartProducts] = useState(null);
 
-  const MapCartProduct = cartProducts.map((product, index) => (
-    <CartProduct product={product} key={index}></CartProduct>
-  ));
+  const MapCartProduct =
+    cartProducts &&
+    cartProducts.map((product, index) => (
+      <CartProduct product={product} key={index}></CartProduct>
+    ));
 
   useEffect(() => {
     axios
