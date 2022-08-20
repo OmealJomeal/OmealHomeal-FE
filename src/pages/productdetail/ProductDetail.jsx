@@ -73,8 +73,6 @@ const ProductDetail = () => {
       });
   }, [id]);
 
-  console.log(product);
-
   const [heartHover, setHeartHover] = useState(false);
   const [bellHover, setBellHover] = useState(false);
 
@@ -114,7 +112,23 @@ const ProductDetail = () => {
     setCount(count + 1);
   };
 
-  const image = `../../images/${id}_noneClear.png`;
+  const onClickCart = () => {
+    const data = {
+      product_price: count * product.product_price,
+      product_amount: count,
+      product_id: parseInt(id),
+    };
+    axios
+      .post("http://localhost:8080/api/cart", data)
+      .then((response) => {
+        console.log(response);
+        window.confirm("상품을 장바구니에 담겠습니까?");
+      })
+      .catch((error) => {
+        console.log(data);
+        console.log(error);
+      });
+  };
 
   return (
     <>
@@ -264,7 +278,7 @@ const ProductDetail = () => {
                       fontWeight: "bold",
                     }}
                   >
-                    8,800
+                    {product && count * product.product_price}
                   </span>
                   <span
                     style={{
@@ -301,7 +315,7 @@ const ProductDetail = () => {
                   onMouseLeave={bellToggleHover}
                 />
               </MiniButton>
-              <CartButton>장바구니 담기</CartButton>
+              <CartButton onClick={onClickCart}>장바구니 담기</CartButton>
             </ProductBox>
           </div>
         </div>
