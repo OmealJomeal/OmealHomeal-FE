@@ -114,6 +114,8 @@ const ProductDetail = () => {
     setCount(count + 1);
   };
 
+  const image = `../../images/${id}_noneClear.png`;
+
   return (
     <>
       <div
@@ -133,9 +135,13 @@ const ProductDetail = () => {
               style={{
                 width: "435px",
                 height: "500px",
-                backgroundColor: "yellow",
               }}
-            ></div>
+            >
+              <img
+                alt="product_image"
+                src={require(`../../images/${id}_noneClear.png`).default}
+              />
+            </div>
           </div>
           <div
             style={{
