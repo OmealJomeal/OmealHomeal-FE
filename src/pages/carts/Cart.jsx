@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import CheckBox from "../../common/checkbox/CheckBox";
 import { AiOutlineShopping } from "react-icons/ai";
+import { FiMapPin } from "react-icons/fi";
 import CartProduct from "./CartProduct";
+import axios from "axios";
 
 const Cart = () => {
   const Line = styled.div`
@@ -14,7 +16,20 @@ const Cart = () => {
 
   const numbers = [1, 2, 3, 4, 5];
 
-  const MapCartProduct = numbers.map((number) => <li>{number}</li>);
+  const MapCartProduct = numbers.map((number, index) => (
+    <CartProduct key={index}></CartProduct>
+  ));
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/product")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <>
@@ -52,9 +67,9 @@ const Cart = () => {
           </div>
         </div>
         <div style={{ width: "1050px", height: "10px" }}> </div>
-        <Line style={{ margin: "20px 0px" }}></Line>
         <div style={{ width: "1050px", display: "flex" }}>
           <div style={{ width: "740px" }}>
+            <Line style={{ width: "740px", margin: "20px 0px" }}></Line>
             <div style={{ display: "flex" }}>
               <AiOutlineShopping
                 style={{
@@ -75,9 +90,20 @@ const Cart = () => {
                 상품 내역
               </div>
             </div>
-            <CartProduct></CartProduct>
+            {MapCartProduct}
           </div>
-          <div style={{ width: "310px" }}></div>
+          <div style={{ width: "310px" }}>
+            <div style={{ width: "310px", height: "18px" }}></div>
+            <div
+              style={{
+                width: "310px",
+                height: "155px",
+                padding: "10px",
+                border: "solid #F2F2F2",
+                borderWidth: "2px",
+              }}
+            ></div>
+          </div>
         </div>
       </div>
     </>
