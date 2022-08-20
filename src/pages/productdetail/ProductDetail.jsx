@@ -160,7 +160,7 @@ const ProductDetail = () => {
                 fontWeight: "bold",
               }}
             >
-              {product.product_name}
+              {product && product.product_name}
             </ProductBox>
             <ProductBox
               style={{
@@ -169,7 +169,7 @@ const ProductDetail = () => {
                 margin: "0px 0px 20px 0px",
               }}
             >
-              {product.product_category}
+              {product && product.product_category}
             </ProductBox>
             <ProductBox style={{ margin: "0px 0px 35px 0px" }}>
               <span
@@ -179,7 +179,7 @@ const ProductDetail = () => {
                   fontWeight: "bold",
                 }}
               >
-                {product.product_price}
+                {product && product.product_price}
               </span>
               &nbsp; &nbsp;
               <span
@@ -226,7 +226,9 @@ const ProductDetail = () => {
               }}
             >
               <ProductMiniBox>상품 설명</ProductMiniBox>
-              <ProductSecBox>{product.product_description}</ProductSecBox>
+              <ProductSecBox>
+                {product && product.product_description}
+              </ProductSecBox>
             </ProductBox>
             <ProductBox style={{ display: "flex", wrap: "wrap" }}>
               <ProductMiniBox>구매 수량</ProductMiniBox>
