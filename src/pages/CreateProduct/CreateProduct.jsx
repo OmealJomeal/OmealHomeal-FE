@@ -33,10 +33,20 @@ const CreateProduct = () => {
   };
 
   const onUploadProduct = () => {
-    formData.append("product_name", value.name);
-    formData.append("product_price", value.price);
-    formData.append("product_description", value.description);
-    formData.append("product_category", value.category);
+    // formData.append('stringFoodDto', JSON.stringify(foodDto));
+    console.log(formData.get("product_name"));
+    if (formData.get("product_name") === null) {
+      formData.append("product_name", JSON.stringify(value.name));
+    }
+    if (formData.get("product_price") === null) {
+      formData.append("product_price", JSON.stringify(value.price));
+    }
+    if (formData.get("product_description") === null) {
+      formData.append("product_description", JSON.stringify(value.description));
+    }
+    if (formData.get("product_category") === null) {
+      formData.append("product_category", JSON.stringify(value.description));
+    }
     axios
       .post("http://localhost:8080/api/product", formData)
       .then((response) => {
