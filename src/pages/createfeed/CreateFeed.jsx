@@ -85,7 +85,7 @@ const CreateFeed = () => {
       formData.append("product_id", [1, 2, 3, 4]);
     }
     axios
-      .post("http://localhost:8080/api/product", formData)
+      .post("http://localhost:8080/api/feed", formData)
       .then((response) => {
         console.log(response);
       })
@@ -117,42 +117,12 @@ const CreateFeed = () => {
         <Indicator style={{ margin: "17px 0px" }}>
           이미지 업로드(필수)
         </Indicator>
-        <label
-          for="file"
-          style={{
-            width: "70px",
-            height: "30px",
-            display: "inline-block",
-            padding: "3px 5px",
-            color: "#aaa",
-            fontSize: "inherit",
-            lineHeight: "normal",
-            verticalAlign: "middle",
-            backgroundColor: "#fdfdfd",
-            cursor: "pointer",
-            border: "1px solid #aaa",
-            borderRadius: ".25em",
-            textAlign: "center",
-            lineHeight: "30px",
-            margin: "20px 10px",
-          }}
-        >
-          업로드
-        </label>
         <input
           type="file"
           accept="image/jpg,image/png,image/jpeg,image/gif"
-          name="product_clear_img"
+          name="feed_img"
           onChange={onFeedImageUpload}
           id="file"
-          style={{
-            width: "1px",
-            height: "1px",
-            margin: "-1px",
-            overflow: "hidden",
-            border: "0",
-            clip: "rect(0,0,0,0)",
-          }}
         ></input>
       </UnitBox>
       <UnitBox>
