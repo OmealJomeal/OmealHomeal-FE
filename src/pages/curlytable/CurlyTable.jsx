@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel, { CarouselItem } from "./carousel";
 import Feed from "./Feed";
 import styled from "styled-components";
+import axios from "axios";
 
 const LoadFeedButton = styled.button`
   width: 240px;
@@ -23,6 +24,17 @@ const CurlyTable = () => {
     "https://picsum.photos/250/320?random=3",
     "https://picsum.photos/250/320?random=4",
   ];
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/api/feed")
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
+  }, []);
   return (
     <>
       <div style={{ width: "1050px", margin: "0px auto" }}>

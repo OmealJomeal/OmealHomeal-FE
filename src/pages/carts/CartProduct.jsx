@@ -36,7 +36,7 @@ const CartProduct = (props) => {
           width: "740px",
           height: "80px",
           display: "flex",
-          margin: "10px 0px",
+          margin: "10px 0px 50px 0px",
         }}
       >
         <CheckBox
