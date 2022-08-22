@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/loginSession")
+      .get("/api/loginSession")
       .then((response) => {
         console.log("로그인 세션", response);
         setLogined(response.data);

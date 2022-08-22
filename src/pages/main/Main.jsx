@@ -8,7 +8,7 @@ import ColumnCarousel, { ColumnCarouselItem } from "./columncarousel";
 const Main = (props) => {
   useEffect(() => {
     axios
-      .get("http://localhost:8080/api/mainFeedFit")
+      .get("/api/mainFeedFit")
       .then((response) => {
         console.log("추천 게시물", response);
       })

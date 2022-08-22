@@ -55,7 +55,7 @@ const SignIn = (props) => {
       password: password,
     };
     axios
-      .post("http://localhost:8080/api/login", JSON.stringify(data), {
+      .post("/api/login", JSON.stringify(data), {
         headers: {
           "Content-Type": "application/json",
           data,
