@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Text = styled.span`
   font-size: 12px;
@@ -26,6 +27,7 @@ const Login = styled.span``;
 const Logout = styled.span``;
 
 const HeaderNav = (props) => {
+  let navigate = useNavigate();
   const [logined, setLogined] = useState("");
 
   const onLogOut = () => {
@@ -54,7 +56,14 @@ const HeaderNav = (props) => {
     setLogined(props.logined);
   }, [props.logined]);
 
-  console.log(logined);
+  const onClickMypage = () => {
+    if (props.logined === "") {
+      alert("로그인이 필요한 작업입니다.");
+      navigate("signin");
+    } else {
+      navigate("mypage");
+    }
+  };
 
   return (
     <>
@@ -71,9 +80,7 @@ const HeaderNav = (props) => {
           )}
         </Text>
         <Middle></Middle>
-        <Text as="a" href="/mypage">
-          마이페이지
-        </Text>
+        <Text onClick={onClickMypage}>마이페이지</Text>
       </div>
     </>
   );
