@@ -64,7 +64,7 @@ const SignIn = (props) => {
       .then((response) => {
         console.log(response);
         if (response.data !== "") {
-          navigate("/");
+          alert("로그인 되셨습니다");
         } else {
           alert("존재하지 않는 아이디나 비밀번호입니다.");
         }

@@ -15,7 +15,7 @@ const Main = (props) => {
     //   .catch((error) => {
     //     console.log(error);
     //   });
-    window.location.replace("/main");
+    // window.location.replace("/");
   }, []);
 
   let navigate = useNavigate();
