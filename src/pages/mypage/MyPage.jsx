@@ -189,7 +189,12 @@ const MyPage = () => {
       },
     };
     axios
-      .put("http://localhost:8080/api/user", JSON.stringify(data))
+      .post("http://localhost:8080/api/user", JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+          data,
+        },
+      })
       .then((response) => {
         console.log(response);
         console.log(JSON.stringify(data));
