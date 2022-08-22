@@ -2,11 +2,29 @@ import React, { useState, useEffect } from "react";
 import { useSwipeable } from "react-swipeable";
 import "./carousel.css";
 import { BsCart } from "react-icons/bs";
+import axios from "axios";
 
 // https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
 
 export const CarouselItem = (props) => {
-  console.log(props);
+  const onClickCart = () => {
+    const data = {
+      product_id: props.id,
+      product_price: props.price,
+      product_amount: 1,
+    };
+    if (window.confirm("상품을 장바구니에 담겠습니까?")) {
+      axios
+        .post("/api/cart", JSON.stringify(data))
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(data);
+          console.log(error);
+        });
+    }
+  };
   return (
     <div
       id={`slide${props.order}`}
@@ -22,6 +40,7 @@ export const CarouselItem = (props) => {
         src={`/upload/product/${props.id}_noneClear.png`}
         style={{
           width: "175px",
+          height: "175px",
           position: "relative",
           top: "-22px",
           display: "block",
@@ -51,6 +70,7 @@ export const CarouselItem = (props) => {
           right: "25px",
           bottom: "60px",
         }}
+        onClick={onClickCart}
       >
         <BsCart></BsCart>
       </div>

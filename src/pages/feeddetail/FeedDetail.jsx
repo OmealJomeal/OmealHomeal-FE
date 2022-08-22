@@ -9,19 +9,6 @@ const FeedDetail = () => {
   const { id } = useParams();
   const [feed, setFeed] = useState(null);
 
-  console.log(id);
-
-  const images = [
-    "https://picsum.photos/175/175?random=1",
-    "https://picsum.photos/175/175?random=2",
-    "https://picsum.photos/175/175?random=3",
-    "https://picsum.photos/175/175?random=4",
-    "https://picsum.photos/175/175?random=5",
-    "https://picsum.photos/175/175?random=6",
-    "https://picsum.photos/175/175?random=7",
-    "https://picsum.photos/175/175?random=8",
-  ];
-
   const onThumbClick = () => {
     window.confirm("좋아요를 누릅니다");
   };
@@ -189,6 +176,7 @@ const FeedDetail = () => {
                   category={product.product_category}
                   id={product.product_id}
                   name={product.product_name}
+                  price={product.product_price}
                 />
               ))}
           </Carousel>
