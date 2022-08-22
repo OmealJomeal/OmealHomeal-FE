@@ -202,6 +202,8 @@ const CreateFeed = () => {
       });
   };
 
+  console.log(selectedId);
+
   return (
     <>
       <div style={{ width: "840px", margin: "0px auto" }}>
@@ -458,7 +460,6 @@ const CreateFeed = () => {
         <Indicator style={{ margin: "17px 0px" }}>
           이미지 업로드(필수)
         </Indicator>
-
         <input
           type="file"
           accept="image/jpg,image/png,image/jpeg,image/gif"
