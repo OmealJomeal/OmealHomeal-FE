@@ -5,10 +5,11 @@ import { BsCart } from "react-icons/bs";
 
 // https://medium.com/tinyso/how-to-create-the-responsive-and-swipeable-carousel-slider-component-in-react-99f433364aa0
 
-export const CarouselItem = ({ src, order }) => {
+export const CarouselItem = (props) => {
+  console.log(props);
   return (
     <div
-      id={`slide${order}`}
+      id={`slide${props.order}`}
       className="carousel-item"
       style={{
         width: "210px",
@@ -17,7 +18,8 @@ export const CarouselItem = ({ src, order }) => {
       }}
     >
       <img
-        src={src}
+        alt={props.id}
+        src={`/upload/product/${props.id}_noneClear.png`}
         style={{
           width: "175px",
           position: "relative",
@@ -33,7 +35,7 @@ export const CarouselItem = ({ src, order }) => {
           color: "#333",
         }}
       >
-        상품명
+        {props.name}
       </div>
       <div
         style={{
