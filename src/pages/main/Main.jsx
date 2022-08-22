@@ -7,15 +7,14 @@ import ColumnCarousel, { ColumnCarouselItem } from "./columncarousel";
 
 const Main = (props) => {
   useEffect(() => {
-    // axios
-    //   .get("http://localhost:8080/api/loginSession")
-    //   .then((response) => {
-    //     console.log("로그인 세션", response);
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
-    // window.location.replace("/");
+    axios
+      .get("http://localhost:8080/api/mainFeedFit")
+      .then((response) => {
+        console.log("추천 게시물", response);
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+      });
   }, []);
 
   let navigate = useNavigate();
