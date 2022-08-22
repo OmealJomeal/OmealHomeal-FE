@@ -53,6 +53,12 @@ const HeaderNav = () => {
       });
   }, []);
 
+  useEffect(() => {
+    setLogined(logined);
+  }, [logined]);
+
+  console.log(logined);
+
   return (
     <>
       <div style={{ position: "absolute", top: "5px", right: "2px" }}>
