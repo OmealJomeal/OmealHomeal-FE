@@ -7,14 +7,17 @@ import ColumnCarousel, { ColumnCarouselItem } from "./columncarousel";
 
 const Main = (props) => {
   useEffect(() => {
-    axios
-      .get("/api/mainFeedFit")
-      .then((response) => {
-        console.log("추천 게시물", response);
-      })
-      .catch((error) => {
-        console.log(error.response.data);
-      });
+    if (props.logined === "") {
+    } else {
+      axios
+        .get("/api/mainFeedFit")
+        .then((response) => {
+          console.log("추천 게시물", response);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    }
   }, []);
 
   let navigate = useNavigate();
@@ -71,52 +74,57 @@ const Main = (props) => {
           margin: "0px auto",
         }}
       >
-        <div
-          classame="carousel1"
-          style={{
-            textAlign: "center",
-            height: "100px",
-            lineHeight: "100px",
-            fontSize: "28px",
-            fontWeight: "bold",
-            marginTop: "40px",
-            color: "#333",
-          }}
-        >
-          민경님을 위한 맞춤 추천
-        </div>
-        <Carousel style={{ display: "flex", flexWrap: "nowrap" }}>
-          {images.map((src, index) => (
-            <CarouselItem
-              key={`CarouselItem${index}`}
-              order={index + 1}
-              src={src}
-            />
-          ))}
-        </Carousel>
-        <div
-          classame="carousel2"
-          style={{
-            textAlign: "center",
-            height: "100px",
-            lineHeight: "100px",
-            fontSize: "28px",
-            fontWeight: "bold",
-            marginTop: "40px",
-            color: "#333",
-          }}
-        >
-          오늘은 조금 다른 메뉴 어때요?
-        </div>
-        <Carousel style={{ display: "flex", flexWrap: "nowrap" }}>
-          {images.map((src, index) => (
-            <CarouselItem
-              key={`CarouselItem${index}`}
-              order={index + 1}
-              src={src}
-            />
-          ))}
-        </Carousel>
+        {props.logined === "" ? null : (
+          <>
+            <div
+              classame="carousel1"
+              style={{
+                textAlign: "center",
+                height: "100px",
+                lineHeight: "100px",
+                fontSize: "28px",
+                fontWeight: "bold",
+                marginTop: "40px",
+                color: "#333",
+              }}
+            >
+              민경님을 위한 맞춤 추천
+            </div>
+            <Carousel style={{ display: "flex", flexWrap: "nowrap" }}>
+              {images.map((src, index) => (
+                <CarouselItem
+                  key={`CarouselItem${index}`}
+                  order={index + 1}
+                  src={src}
+                />
+              ))}
+            </Carousel>
+            <div
+              classame="carousel2"
+              style={{
+                textAlign: "center",
+                height: "100px",
+                lineHeight: "100px",
+                fontSize: "28px",
+                fontWeight: "bold",
+                marginTop: "40px",
+                color: "#333",
+              }}
+            >
+              오늘은 조금 다른 메뉴 어때요?
+            </div>
+            <Carousel style={{ display: "flex", flexWrap: "nowrap" }}>
+              {images.map((src, index) => (
+                <CarouselItem
+                  key={`CarouselItem${index}`}
+                  order={index + 1}
+                  src={src}
+                />
+              ))}
+            </Carousel>
+          </>
+        )}
+
         <div
           classame="carousel2"
           style={{

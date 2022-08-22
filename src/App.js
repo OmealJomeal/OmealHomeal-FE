@@ -41,7 +41,7 @@ function App() {
             <Header logined={logined} />
             <NavBar />
             <Routes className="App">
-              <Route path="/" element={<Main />}></Route>
+              <Route path="/" element={<Main logined={logined} />}></Route>
               <Route path="/signin" element={<SignIn />}></Route>
               <Route path="/signup" element={<SignUp />}></Route>
               <Route path="/mypage" element={<MyPage />}></Route>
