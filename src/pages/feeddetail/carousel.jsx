@@ -9,13 +9,18 @@ import axios from "axios";
 export const CarouselItem = (props) => {
   const onClickCart = () => {
     const data = {
-      product_id: props.id,
+      product_id: parseInt(props.id),
       product_price: props.price,
       product_amount: 1,
     };
     if (window.confirm("상품을 장바구니에 담겠습니까?")) {
       axios
-        .post("/api/cart", JSON.stringify(data))
+        .post("/api/cart", JSON.stringify(data), {
+          headers: {
+            "Content-Type": "application/json",
+            data,
+          },
+        })
         .then((response) => {
           console.log(response);
         })
