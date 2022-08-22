@@ -25,8 +25,8 @@ const Login = styled.span``;
 
 const Logout = styled.span``;
 
-const HeaderNav = () => {
-  const [logined, setLogined] = useState(null);
+const HeaderNav = (props) => {
+  const [logined, setLogined] = useState("");
 
   const onLogOut = () => {
     axios
@@ -42,20 +42,17 @@ const HeaderNav = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/api/loginSession")
-      .then((response) => {
-        console.log("로그인 세션", response);
-        setLogined(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    setLogined(logined);
-  }, [logined]);
+    // axios
+    //   .get("http://localhost:8080/api/loginSession")
+    //   .then((response) => {
+    //     console.log("로그인 세션", response);
+    //     setLogined(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    setLogined(props.logined);
+  }, [props.logined]);
 
   console.log(logined);
 
