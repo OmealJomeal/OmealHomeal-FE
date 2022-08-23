@@ -63,7 +63,18 @@ const FeedDetail = (props) => {
       });
   }, []);
 
-  console.log(feed);
+  const onClickDelete = () => {
+    if (window.confirm("게시글을 삭제하시겠습니까?")) {
+      axios
+        .delete(`/api/feed/${id}`)
+        .then(function (response) {
+          console.log("삭제", response);
+        })
+        .catch(function (error) {
+          console.log("삭제", error);
+        });
+    }
+  };
 
   return (
     <>
@@ -75,6 +86,23 @@ const FeedDetail = (props) => {
             whiteSpace: "pre-wrap",
           }}
         >
+          {props.logined.user_id === feed.feedDetail.user_id ? (
+            <div
+              style={{
+                backgroundColor: "#C8A3E3",
+                width: "70px",
+                height: "25px",
+                textAlign: "center",
+                color: "white",
+                position: "relative",
+                left: "980px",
+              }}
+              onClick={onClickDelete}
+            >
+              삭제
+            </div>
+          ) : null}
+
           <div style={{ display: "flex" }}>
             <div
               style={{
@@ -82,14 +110,7 @@ const FeedDetail = (props) => {
                 height: "515px",
               }}
             >
-              <img
-                style={{
-                  width: "430px",
-                  height: "515px",
-                }}
-                alt={id}
-                src={`/upload/feed/${id}_FeedImg.png`}
-              />
+              <img style={{}} alt={id} src={`/upload/feed/${id}_FeedImg.png`} />
             </div>
             <div
               style={{
