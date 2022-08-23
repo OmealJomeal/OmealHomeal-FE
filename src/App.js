@@ -27,12 +27,9 @@ function App() {
     axios
       .get("/api/loginSession")
       .then((response) => {
-        console.log("로그인 세션", response);
         setLogined(response.data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, []);
 
   return (

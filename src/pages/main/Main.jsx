@@ -15,21 +15,15 @@ const Main = (props) => {
       axios
         .get("/api/mainFeedFit")
         .then((response) => {
-          console.log("추천 게시물", response);
           setFeedFit(response.data);
         })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
+        .catch((error) => {});
       axios
         .get("/api/mainFeedNotFit")
         .then((response) => {
-          console.log("비추천 게시물", response);
           setFeedNotFit(response.data);
         })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
+        .catch((error) => {});
     }
   }, []);
 

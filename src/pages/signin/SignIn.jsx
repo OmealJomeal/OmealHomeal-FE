@@ -62,7 +62,6 @@ const SignIn = (props) => {
         },
       })
       .then((response) => {
-        console.log(response);
         if (response.data !== "") {
           alert("로그인 되셨습니다");
           window.location.replace("/");
@@ -71,7 +70,6 @@ const SignIn = (props) => {
         }
       })
       .catch((error) => {
-        console.log(error.response.data);
         alert("");
       });
   };

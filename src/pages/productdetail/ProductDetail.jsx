@@ -65,12 +65,9 @@ const ProductDetail = () => {
     axios
       .get(`/api/productdetail/${id}`)
       .then((response) => {
-        console.log(response);
         setProduct(response.data);
       })
-      .catch((error) => {
-        console.log(error);
-      });
+      .catch((error) => {});
   }, [id]);
 
   const [heartHover, setHeartHover] = useState(false);
@@ -121,13 +118,8 @@ const ProductDetail = () => {
     if (window.confirm("상품을 장바구니에 담겠습니까?")) {
       axios
         .post("/api/cart", JSON.stringify(data))
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((error) => {
-          console.log(data);
-          console.log(error);
-        });
+        .then((response) => {})
+        .catch((error) => {});
     }
   };
 
