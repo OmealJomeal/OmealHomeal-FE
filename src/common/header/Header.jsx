@@ -20,10 +20,9 @@ const Header = (props) => {
         <a href="/">
           <img
             style={{
-              width: "186px",
-              height: "200px",
+              width: "180px",
               position: "relative",
-              bottom: "50px",
+              top: "30px",
             }}
             src="/upload/logo.png"
           />
