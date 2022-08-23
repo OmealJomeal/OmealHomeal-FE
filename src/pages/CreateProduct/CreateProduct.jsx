@@ -46,7 +46,9 @@ const CreateProduct = () => {
     axios
       .post("/api/product", formData)
       .then((response) => {})
-      .catch((error) => {});
+      .catch((error) => {
+        console.log(error.response.data);
+      });
   };
 
   return (
