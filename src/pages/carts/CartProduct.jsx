@@ -32,15 +32,17 @@ const CartProduct = (props) => {
   };
 
   const onClickDelete = () => {
-    axios
-      .delete(`/api/cart/${props.cart_id}`)
-      .then(function (response) {
-        console.log("장바구니 삭제", response);
-        window.location.replace("/cart");
-      })
-      .catch(function (error) {
-        console.log("장바구니 삭제", error);
-      });
+    if (window.confirm("장바구니에서 해당 상품을 삭제하시겠습니까?")) {
+      axios
+        .delete(`/api/cart/${props.cart_id}`)
+        .then(function (response) {
+          console.log("장바구니 삭제", response);
+          window.location.replace("/cart");
+        })
+        .catch(function (error) {
+          console.log("장바구니 삭제", error);
+        });
+    }
   };
   return (
     <>
