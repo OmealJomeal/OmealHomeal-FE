@@ -242,7 +242,7 @@ const ProductDetail = () => {
               }}
             >
               <ProductMiniBox>상품 설명</ProductMiniBox>
-              <ProductSecBox>
+              <ProductSecBox style={{ whiteSpace: "pre-wrap" }}>
                 {product && product.product_description}
               </ProductSecBox>
             </ProductBox>
