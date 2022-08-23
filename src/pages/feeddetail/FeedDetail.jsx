@@ -112,7 +112,7 @@ const FeedDetail = (props) => {
               }}
             >
               <img
-                style={{ width: "300px" }}
+                style={{ width: "380px" }}
                 alt={id}
                 src={`/upload/feed/${id}_FeedImg.png`}
               />

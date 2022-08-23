@@ -157,6 +157,7 @@ const ProductDetail = () => {
                 src={`/upload/product/${
                   product && product.product_id
                 }_noneClear.png`}
+                style={{ width: "380px" }}
               />
             </div>
           </div>

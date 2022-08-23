@@ -135,7 +135,7 @@ const Main = (props) => {
           ))}
         </ColumnCarousel>
       </div>
-      <div style={{ width: "1050px", height: "250px", margin: "0px auto" }}>
+      <div style={{ width: "1050px", margin: "0px auto" }}>
         <div>
           <div style={{ position: "relative" }}>
             <div
@@ -178,7 +178,7 @@ const Main = (props) => {
             ></img>
           </div>
         </div>
-        {/* <div>
+        <div>
           <div style={{ position: "relative" }}>
             <div
               style={{
@@ -218,9 +218,9 @@ const Main = (props) => {
               style={{ position: "absolute", right: "0px", top: "0px" }}
             ></img>
           </div>
-        </div> */}
+        </div>
 
-        {/* <div style={{ position: "relative" }}>
+        <div style={{ position: "relative" }}>
           <div
             style={{
               width: "600px",
@@ -259,8 +259,8 @@ const Main = (props) => {
             src={process.env.PUBLIC_URL + "./img/column3.png"}
             style={{ position: "absolute", right: "0px", top: "0px" }}
           ></img>
-        </div> */}
-        {/* <div style={{ position: "relative" }}>
+        </div>
+        <div style={{ position: "relative" }}>
           <div
             style={{
               width: "600px",
@@ -299,8 +299,8 @@ const Main = (props) => {
             src={process.env.PUBLIC_URL + "./img/column4.png"}
             style={{ position: "absolute", right: "0px", top: "0px" }}
           ></img>
-        </div> */}
-        {/* <div style={{ position: "relative" }}>
+        </div>
+        <div style={{ position: "relative" }}>
           <div
             style={{
               width: "600px",
@@ -337,7 +337,7 @@ const Main = (props) => {
             src={process.env.PUBLIC_URL + "./img/column5.png"}
             style={{ position: "absolute", right: "0px", top: "0px" }}
           ></img>
-        </div> */}
+        </div>
       </div>
     </>
   );
