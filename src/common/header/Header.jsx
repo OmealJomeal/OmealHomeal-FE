@@ -17,6 +17,17 @@ const Header = (props) => {
           position: "relative",
         }}
       >
+        <a href="/">
+          <img
+            style={{
+              width: "186px",
+              height: "200px",
+              position: "relative",
+              bottom: "50px",
+            }}
+            src="/upload/logo.png"
+          />
+        </a>
         <HeaderNav logined={props.logined} />
         <HeaderIcons logined={props.logined} />
         <SearchBox />
