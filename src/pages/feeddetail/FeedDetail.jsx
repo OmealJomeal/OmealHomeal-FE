@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 const FeedDetail = (props) => {
   const { id } = useParams();
   const [feed, setFeed] = useState(null);
-  const [likes, setLikes] = useState(0);
+  const [likes, setLikes] = useState(null);
 
   let navigate = useNavigate();
 
@@ -56,6 +56,7 @@ const FeedDetail = (props) => {
       .then((response) => {
         console.log(response.data);
         setFeed(response.data);
+        setLikes(response.data.feedDetail.countLikes);
       })
       .catch((error) => {
         console.log(error);
