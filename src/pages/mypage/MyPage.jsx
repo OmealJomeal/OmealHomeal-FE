@@ -192,7 +192,9 @@ const MyPage = () => {
           data,
         },
       })
-      .then((response) => {})
+      .then((response) => {
+        alert("회원정보가 수정되셨습니다");
+      })
       .catch((error) => {});
   };
 
