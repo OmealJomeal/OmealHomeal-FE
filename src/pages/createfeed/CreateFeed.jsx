@@ -279,6 +279,7 @@ const CreateFeed = () => {
             onChange={onChangeSearch}
             type="text"
             name="title"
+            placeholder="상품명으로 검색하세요 ex) 양파, 계란"
           ></input>
         </div>
       </UnitBox>

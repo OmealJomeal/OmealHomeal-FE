@@ -54,7 +54,7 @@ function App() {
               ></Route>
               <Route
                 path="/productdetail/:id"
-                element={<ProductDetail />}
+                element={<ProductDetail logined={logined} />}
               ></Route>
               <Route
                 path="/feeddetail/:id"

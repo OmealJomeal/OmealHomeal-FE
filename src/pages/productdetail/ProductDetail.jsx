@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 import styled from "styled-components";
 import { BsHeart } from "react-icons/bs";
@@ -57,7 +58,7 @@ const CountButton = styled.button`
   text-align: center;
 `;
 
-const ProductDetail = () => {
+const ProductDetail = (props) => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
 
@@ -109,17 +110,24 @@ const ProductDetail = () => {
     setCount(count + 1);
   };
 
+  let navigate = useNavigate();
+
   const onClickCart = () => {
-    const data = {
-      product_price: count * product.product_price,
-      product_amount: count,
-      product_id: parseInt(id),
-    };
-    if (window.confirm("상품을 장바구니에 담겠습니까?")) {
-      axios
-        .post("/api/cart", JSON.stringify(data))
-        .then((response) => {})
-        .catch((error) => {});
+    if (props.logined === "") {
+      alert("로그인이 필요한 작업입니다.");
+      navigate("/signin");
+    } else {
+      const data = {
+        product_price: count * product.product_price,
+        product_amount: count,
+        product_id: parseInt(id),
+      };
+      if (window.confirm("상품을 장바구니에 담겠습니까?")) {
+        axios
+          .post("/api/cart", JSON.stringify(data))
+          .then((response) => {})
+          .catch((error) => {});
+      }
     }
   };
 
