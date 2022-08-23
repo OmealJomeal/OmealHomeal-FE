@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BsHandThumbsUp } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const Feed = (props) => {
+  const [likes, setLikes] = useState(null);
+
   return (
     <>
       <Link
