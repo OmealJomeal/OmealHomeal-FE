@@ -110,7 +110,11 @@ const FeedDetail = (props) => {
                 height: "515px",
               }}
             >
-              <img style={{}} alt={id} src={`/upload/feed/${id}_FeedImg.png`} />
+              <img
+                style={{ width: "300px" }}
+                alt={id}
+                src={`/upload/feed/${id}_FeedImg.png`}
+              />
             </div>
             <div
               style={{
