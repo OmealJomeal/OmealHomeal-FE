@@ -157,11 +157,11 @@ const FeedDetail = (props) => {
                   }}
                 >
                   조리 난이도 :&nbsp;{" "}
-                  {feed && feed.feedDetail.feed_cooklevel === "2"
+                  {feed && feed.feedDetail.feed_cooklevel === 2
                     ? "상"
-                    : feed.feedDetail.feed_cooklevel === "1"
+                    : feed.feedDetail.feed_cooklevel === 1
                     ? "중"
-                    : feed.feedDetail.feed_cooklevel === "0"
+                    : feed.feedDetail.feed_cooklevel === 0
                     ? "하"
                     : null}
                 </div>

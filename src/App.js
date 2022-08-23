@@ -64,7 +64,7 @@ function App() {
                 element={<FeedDetail logined={logined} />}
               ></Route>
             </Routes>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
           </BrowserRouter>
         </ThemeProvider>
       </div>
