@@ -206,10 +206,9 @@ const CreateFeed = () => {
     }
     axios
       .post("/api/feed", formData)
-      .then((response) => {
-        window.location.replace("/curlytable");
-      })
+      .then((response) => {})
       .catch((error) => {});
+    window.location.replace("/curlytable");
   };
 
   return (
