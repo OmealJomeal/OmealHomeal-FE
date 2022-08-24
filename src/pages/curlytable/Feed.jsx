@@ -64,9 +64,9 @@ const Feed = (props) => {
             style={{
               position: "absolute",
               right: "0px",
-              top: "0px",
-              width: "195px",
-              height: "250px",
+              top: "10px",
+              width: "185px",
+              height: "230px",
             }}
           ></img>
         </div>
