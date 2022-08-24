@@ -206,9 +206,12 @@ const CreateFeed = () => {
     }
     axios
       .post("/api/feed", formData)
-      .then((response) => {})
-      .catch((error) => {});
-    window.location.replace("/curlytable");
+      .then((response) => {
+        window.location.replace("/curlytable");
+      })
+      .catch((error) => {
+        alert("사진 용량이 너무 큽니다.");
+      });
   };
 
   return (
