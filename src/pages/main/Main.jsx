@@ -27,7 +27,11 @@ const Main = (props) => {
     }
   }, []);
 
-  const mainimages = ["/img/maincarousel1.png", "/img/maincarousel2.png"];
+  const mainimages = [
+    "/img/maincarousel1.png",
+    "/img/maincarousel2.png",
+    "/img/maincarousel3.png",
+  ];
 
   const columnimages = ["/img/columncarousel1.png", "/img/columncarousel2.png"];
 

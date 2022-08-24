@@ -9,7 +9,13 @@ const Feed = (props) => {
         to={`/feeddetail/${props.id}`}
         style={{ textDecoration: "none", color: "#333" }}
       >
-        <div style={{ position: "relative", borderTop: "solid #DDD" }}>
+        <div
+          style={{
+            position: "relative",
+            borderTop: "solid #DDD",
+            borderWidth: "1px",
+          }}
+        >
           <div
             style={{
               width: "600px",
