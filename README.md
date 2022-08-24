@@ -1,7 +1,7 @@
 # Getting Started with Create React App
 # OmealJomeal
 
-##### _[frontend사이트는 여기!](https://github.com/OmealJomeal/OmealJomeal_backend)
+##### _[backend사이트는 여기!](https://github.com/OmealJomeal/OmealJomeal_backend)
 
 ## 소셜 네트워크와 게이미피케이션 기능을 접목한 추천 서비스 플랫폼, 오밀조밀
 
