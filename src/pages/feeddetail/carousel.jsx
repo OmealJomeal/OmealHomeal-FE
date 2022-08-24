@@ -26,7 +26,11 @@ export const CarouselItem = (props) => {
               data,
             },
           })
-          .then((response) => {})
+          .then((response) => {
+            if (response.data === 0) {
+              alert("이미 장바구니에 담긴 상품입니다.");
+            }
+          })
           .catch((error) => {});
       }
     }
